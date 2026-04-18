@@ -37,8 +37,13 @@ const records: RecordEntry[] = [
     content: "毛玻璃 + 流动边框先到位。后续每天把图片/视频丢进 public/media，再在这里补一条记录。",
     tags: ["setup", "design"],
     media: [
-      { type: "image", src: "/globe.svg", alt: "globe" },
-      { type: "image", src: "/window.svg", alt: "window" },
+      { type: "image", src: "/picture/1.jpg", alt: "1" },
+      { type: "image", src: "/picture/2.jpg", alt: "2" },
+      { type: "image", src: "/picture/3.jpg", alt: "3" },
+      { type: "image", src: "/picture/4.jpg", alt: "4" },
+      { type: "image", src: "/picture/5.jpg", alt: "5" },
+      { type: "image", src: "/picture/6.jpg", alt: "6" },
+      { type: "image", src: "/picture/7.jpg", alt: "7" },
     ],
   },
   {
