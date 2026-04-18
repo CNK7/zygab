@@ -53,12 +53,12 @@ const records: RecordEntry[] = [
     content: "偏 AI / SaaS Landing 的“高级感”流动边框 + 苹果式毛玻璃质感，暗黑模式也要好看。",
     tags: ["inspiration"],
     media: [
-      { type: "video", src: "/video/zyg%20%281%29.mp4" },
-      { type: "video", src: "/video/zyg%20%282%29.mp4" },
-      { type: "video", src: "/video/zyg%20%283%29.mp4" },
-      { type: "video", src: "/video/zyg%20%284%29.mp4" },
-      { type: "video", src: "/video/zyg%20%285%29.mp4" },
-      { type: "video", src: "/video/zyg%20%286%29.mp4" },
+      { type: "video", src: "/video/zyg-1.mp4" },
+      { type: "video", src: "/video/zyg-2.mp4" },
+      { type: "video", src: "/video/zyg-3.mp4" },
+      { type: "video", src: "/video/zyg-4.mp4" },
+      { type: "video", src: "/video/zyg-5.mp4" },
+      { type: "video", src: "/video/zyg-6.mp4" },
     ],
   },
 ];
