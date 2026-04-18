@@ -9,6 +9,7 @@
   --panel-border: rgba(11, 16, 32, 0.10);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
   --beam-occlude: #ffffff;
+  --modal-bg: rgba(255, 255, 255, 0.92);
 
   --beam-1: #7c3aed;
   --beam-2: #06b6d4;
@@ -26,6 +27,7 @@
   --panel-border: rgba(11, 16, 32, 0.10);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
   --beam-occlude: #ffffff;
+  --modal-bg: rgba(255, 255, 255, 0.92);
 
   --beam-1: #7c3aed;
   --beam-2: #06b6d4;
@@ -43,6 +45,7 @@
   --panel-border: rgba(255, 255, 255, 0.10);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
   --beam-occlude: #12141e;
+  --modal-bg: rgba(12, 14, 22, 0.92);
 
   --beam-1: #60a5fa;
   --beam-2: #22c55e;
@@ -68,6 +71,7 @@
     --panel-border: rgba(255, 255, 255, 0.10);
     --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
     --beam-occlude: #12141e;
+    --modal-bg: rgba(12, 14, 22, 0.92);
 
     --beam-1: #60a5fa;
     --beam-2: #22c55e;
