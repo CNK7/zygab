@@ -61,7 +61,6 @@ const records: RecordEntry[] = [
       { type: "video", src: "/video/zyg-6.mp4" },
     ],
   },
-],
  {
     date: "2026-01-01",
     title: "妹妹照片",
