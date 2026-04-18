@@ -250,6 +250,17 @@ npm run dev -- --port 3001
 
 否则本地地址可能被错误走代理，导致打不开预览。
 
+### 7.2.1 为什么我修改 GitHub 内容，Vercel 没有反应？
+
+按这个顺序排查：
+
+1. 确认你改的是 Vercel 当前项目连接的那个 GitHub 仓库（Vercel Project → Settings → Git → Connected Git Repository）
+2. 确认你 push 的分支是 Vercel 的 Production Branch（同一个页面里能看到）
+3. 进入 Vercel 项目 Deployments，看有没有新的部署记录
+4. 如果没有新的部署记录，检查 Settings → Git 里 Auto Deployments 是否被关闭
+5. 如果部署记录存在但失败，点开部署查看 Build Logs
+6. 如果你用了 Git LFS（尤其是视频），需要在 Settings → Git 里开启 Git LFS，然后重新部署一次
+
 ### 7.3 图片不显示
 
 检查三件事：
