@@ -150,7 +150,7 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                 <button
                   type="button"
                   onClick={() => setActiveIndex(null)}
-                  className="absolute right-2 top-2 z-10 hidden h-10 w-10 place-items-center rounded-full bg-black/55 text-white backdrop-blur hover:bg-black/65 active:bg-black/75 sm:grid"
+                  className="absolute right-2 top-2 z-10 grid h-10 w-10 place-items-center rounded-full bg-black/55 text-white backdrop-blur hover:bg-black/65 active:bg-black/75"
                   aria-label="关闭"
                   title="关闭"
                 >
@@ -162,7 +162,7 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                 <button
                   type="button"
                   onClick={goPrev}
-                  className={`absolute left-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/55 active:bg-black/65 sm:grid ${
+                  className={`absolute left-3 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/55 active:bg-black/65 ${
                     canPrev ? "" : "opacity-40"
                   }`}
                   aria-label="上一张"
@@ -176,7 +176,7 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                 <button
                   type="button"
                   onClick={goNext}
-                  className={`absolute right-3 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/55 active:bg-black/65 sm:grid ${
+                  className={`absolute right-3 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/55 active:bg-black/65 ${
                     canNext ? "" : "opacity-40"
                   }`}
                   aria-label="下一张"
@@ -187,58 +187,12 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                   </svg>
                 </button>
 
-                <div className="pointer-events-none absolute left-1/2 top-3 z-10 hidden -translate-x-1/2 rounded-full bg-black/45 px-3 py-1 text-xs font-medium text-white backdrop-blur sm:block">
+                <div className="pointer-events-none absolute left-1/2 top-3 z-10 -translate-x-1/2 rounded-full bg-black/45 px-3 py-1 text-xs font-medium text-white backdrop-blur">
                   {activeIndex !== null ? `${activeIndex + 1} / ${total}` : null}
                 </div>
 
-                <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/55 px-2 py-2 text-white backdrop-blur sm:hidden">
-                  <button
-                    type="button"
-                    onClick={goPrev}
-                    className={`grid h-10 w-10 place-items-center rounded-full bg-black/35 transition active:bg-black/55 ${
-                      canPrev ? "" : "opacity-40"
-                    }`}
-                    aria-label="上一张"
-                    title="上一张"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-
-                  <div className="min-w-[64px] text-center text-xs font-medium">
-                    {activeIndex !== null ? `${activeIndex + 1}/${total}` : null}
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={goNext}
-                    className={`grid h-10 w-10 place-items-center rounded-full bg-black/35 transition active:bg-black/55 ${
-                      canNext ? "" : "opacity-40"
-                    }`}
-                    aria-label="下一张"
-                    title="下一张"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveIndex(null)}
-                    className="grid h-10 w-10 place-items-center rounded-full bg-black/35 transition active:bg-black/55"
-                    aria-label="关闭"
-                    title="关闭"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-                    </svg>
-                  </button>
-                </div>
-
                 {hint ? (
-                  <div className="pointer-events-none absolute bottom-16 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white backdrop-blur sm:bottom-3">
+                  <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white backdrop-blur">
                     {hint}
                   </div>
                 ) : null}
