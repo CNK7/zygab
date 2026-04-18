@@ -1,4 +1,5 @@
 import MediaGrid from "./components/MediaGrid";
+import DonateUSDTButton from "./components/DonateUSDTButton";
 import ThemeToggle from "./components/ThemeToggle";
 
 type MediaItem = {
@@ -22,6 +23,12 @@ const contacts = [
   { label: "邮箱", href: "mailto:you@example.com" },
   { label: "Line", href: "https://line.me/ti/p/~your_line_id" },
 ];
+
+const usdtDonation = {
+  address: "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  networkLabel: "TRC20",
+  qrImageSrc: "/usdt-qr.png",
+};
 
 const records: RecordEntry[] = [
   {
@@ -64,11 +71,10 @@ export default function Home() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <h1 className="text-balance text-2xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-3xl">
-                你好，我是（在这里写你的名字）
+                你好，欢迎来到神秘世界！
               </h1>
               <p className="max-w-2xl text-pretty text-sm leading-6 text-[color:var(--muted)] sm:text-base">
-                这是我的记录页面：用本地图片与视频，记录每一天。风格偏“流动边框”质感 + 苹果式毛玻璃，
-                在暗黑模式下也保持清爽。
+                这是我的记录页面：记录美好生活每一天。
               </p>
             </div>
 
@@ -86,6 +92,11 @@ export default function Home() {
                     {c.label}
                   </a>
                 ))}
+                <DonateUSDTButton
+                  address={usdtDonation.address}
+                  networkLabel={usdtDonation.networkLabel}
+                  qrImageSrc={usdtDonation.qrImageSrc}
+                />
               </div>
             </div>
           </div>
