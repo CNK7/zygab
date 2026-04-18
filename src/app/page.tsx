@@ -34,8 +34,8 @@ const usdtDonation = {
 const records: RecordEntry[] = [
   {
     date: "2026-04-18",
-    title: "第一天：把页面搭起来",
-    content: "毛玻璃 + 流动边框先到位。后续每天把图片/视频丢进 public/media，再在这里补一条记录。",
+    title: "跟妹妹聊色色",
+    content: "今天休息，睡到下午有点无聊了。想到妹妹好久没联系了，就联系一下。妹妹一说干嘛我就想歪了，嘎嘎嘎。干脆就（干吧）",
     tags: ["setup", "design"],
     media: [
       { type: "image", src: "/picture/1.jpg", alt: "1" },
@@ -49,8 +49,8 @@ const records: RecordEntry[] = [
   },
   {
     date: "2026-04-17",
-    title: "灵感收集",
-    content: "偏 AI / SaaS Landing 的“高级感”流动边框 + 苹果式毛玻璃质感，暗黑模式也要好看。",
+    title: "视频集锦",
+    content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏",
     tags: ["inspiration"],
     media: [
       { type: "video", src: "/video/zyg-1.mp4" },
