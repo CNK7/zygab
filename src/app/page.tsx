@@ -84,10 +84,12 @@ export default function Home() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <h1 className="text-balance text-2xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-3xl">
-                你好，欢迎来到神秘世界！
+                你好，欢迎来到章鱼哥神秘世界！
               </h1>
               <p className="max-w-2xl text-pretty text-sm leading-6 text-[color:var(--muted)] sm:text-base">
-                这是我的记录页面：记录美好生活每一天。
+                这是我的记录页面：记录美好生活每一天。<br>
+                  这里只是某些预览，投喂388及以上更有更多内容待开放哦！【无码超清等待你来解锁！】不会使用USDT的板板可以联系我邮箱哦~
+                
               </p>
             </div>
 
@@ -118,9 +120,9 @@ export default function Home() {
         <section className="mt-10">
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
-              <h2 className="text-lg font-semibold tracking-tight text-[color:var(--foreground)]">每天的记录</h2>
+              <h2 className="text-lg font-semibold tracking-tight text-[color:var(--foreground)]">精彩集锦</h2>
               <p className="mt-1 text-sm text-[color:var(--muted)]">
-                把图片/视频放进 public/media，然后在 records 数组里加一条即可。
+                无码超清等待你来解锁！妹妹正在开发中~还有3个小女友，忙不过来了嘎QAQ
               </p>
             </div>
           </div>
