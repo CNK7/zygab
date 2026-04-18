@@ -87,9 +87,9 @@ export default function Home() {
                 你好，欢迎来到章鱼哥神秘世界！
               </h1>
               <p className="max-w-2xl text-pretty text-sm leading-6 text-[color:var(--muted)] sm:text-base">
-                这是我的记录页面：记录美好生活每一天。<br>
-                  这里只是某些预览，投喂388及以上更有更多内容待开放哦！【无码超清等待你来解锁！】不会使用USDT的板板可以联系我邮箱哦~
-                
+                这是我的记录页面：记录美好生活每一天。
+                <br />
+                这里只是某些预览，投喂388及以上更有更多内容待开放哦！【无码超清等待你来解锁！】不会使用USDT的板板可以联系我邮箱哦~
               </p>
             </div>
 
