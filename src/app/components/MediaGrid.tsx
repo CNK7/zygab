@@ -12,16 +12,37 @@ type MediaItem = {
 };
 
 export default function MediaGrid({ media }: { media: MediaItem[] }) {
-  const [activeMedia, setActiveMedia] = useState<MediaItem | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hint, setHint] = useState<string | null>(null);
+  const activeMedia = activeIndex === null ? null : media[activeIndex] ?? null;
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setActiveMedia(null);
+      if (event.key === "Escape") setActiveIndex(null);
+      if (activeIndex === null) return;
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        if (activeIndex <= 0) {
+          setHint("已经是第一张了");
+          window.setTimeout(() => setHint(null), 900);
+          return;
+        }
+        setActiveIndex(activeIndex - 1);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        if (activeIndex >= media.length - 1) {
+          setHint("已经是最后一张了");
+          window.setTimeout(() => setHint(null), 900);
+          return;
+        }
+        setActiveIndex(activeIndex + 1);
+      }
     }
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [activeIndex, media.length]);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -31,10 +52,33 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
     };
   }, [activeMedia]);
 
+  function showEdgeHint(text: string) {
+    setHint(text);
+    window.setTimeout(() => setHint(null), 900);
+  }
+
+  function goPrev() {
+    if (activeIndex === null) return;
+    if (activeIndex <= 0) {
+      showEdgeHint("已经是第一张了");
+      return;
+    }
+    setActiveIndex(activeIndex - 1);
+  }
+
+  function goNext() {
+    if (activeIndex === null) return;
+    if (activeIndex >= media.length - 1) {
+      showEdgeHint("已经是最后一张了");
+      return;
+    }
+    setActiveIndex(activeIndex + 1);
+  }
+
   return (
     <>
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {media.map((item) => {
+        {media.map((item, index) => {
           if (item.type === "video") {
             return (
               <div
@@ -50,7 +94,7 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                 />
                 <button
                   type="button"
-                  onClick={() => setActiveMedia(item)}
+                  onClick={() => setActiveIndex(index)}
                   className="absolute right-2 top-2 grid h-9 w-9 place-items-center rounded-full bg-black/45 text-white backdrop-blur hover:bg-black/55 active:bg-black/65"
                   aria-label="放大观看视频"
                   title="放大观看"
@@ -70,7 +114,7 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
             <button
               key={`${item.type}:${item.src}`}
               type="button"
-              onClick={() => setActiveMedia(item)}
+              onClick={() => setActiveIndex(index)}
               className="panel-soft relative aspect-video overflow-hidden rounded-xl border border-[color:var(--panel-border)] text-left"
               aria-label={`查看大图：${item.alt ?? "图片"}`}
             >
@@ -90,7 +134,7 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
         ? createPortal(
             <div
               className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/85 p-2 sm:p-6"
-              onPointerDown={() => setActiveMedia(null)}
+              onPointerDown={() => setActiveIndex(null)}
               role="presentation"
             >
               <div
@@ -102,7 +146,7 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
               >
                 <button
                   type="button"
-                  onClick={() => setActiveMedia(null)}
+                  onClick={() => setActiveIndex(null)}
                   className="absolute right-2 top-2 z-10 grid h-10 w-10 place-items-center rounded-full bg-black/55 text-white backdrop-blur hover:bg-black/65 active:bg-black/75"
                   aria-label="关闭"
                   title="关闭"
@@ -111,6 +155,36 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                     <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
                   </svg>
                 </button>
+
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  className="absolute left-2 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur hover:bg-black/55 active:bg-black/65"
+                  aria-label="上一张"
+                  title="上一张"
+                >
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={goNext}
+                  className="absolute right-14 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur hover:bg-black/55 active:bg-black/65"
+                  aria-label="下一张"
+                  title="下一张"
+                >
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                {hint ? (
+                  <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white backdrop-blur">
+                    {hint}
+                  </div>
+                ) : null}
 
                 {activeMedia.type === "video" ? (
                   <div className="grid h-full w-full place-items-center">
@@ -125,14 +199,22 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                     />
                   </div>
                 ) : (
-                  <Image
-                    src={activeMedia.src}
-                    alt={activeMedia.alt ?? ""}
-                    fill
-                    sizes="100vw"
-                    className="object-contain"
-                    priority
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(null)}
+                    className="relative h-full w-full"
+                    aria-label="关闭图片"
+                    title="关闭"
+                  >
+                    <Image
+                      src={activeMedia.src}
+                      alt={activeMedia.alt ?? ""}
+                      fill
+                      sizes="100vw"
+                      className="object-contain"
+                      priority
+                    />
+                  </button>
                 )}
               </div>
             </div>,
