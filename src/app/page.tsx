@@ -92,7 +92,7 @@ const records: RecordEntry[] = [
   {
     date: "2026-04-17",
     title: "视频集锦",
-    content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏",
+    content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏<br />建议直接打开右上角放大按钮观看哦~",
     tags: ["inspiration"],
     media: [
       { type: "video", src: "/video/zyg-1.mp4" },
