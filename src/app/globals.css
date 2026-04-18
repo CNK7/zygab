@@ -1,8 +1,54 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8ff;
+  --foreground: #0b1020;
+  --muted: rgba(11, 16, 32, 0.72);
+  --panel: rgba(255, 255, 255, 0.65);
+  --panel-strong: rgba(255, 255, 255, 0.78);
+  --panel-border: rgba(11, 16, 32, 0.10);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  --beam-occlude: #ffffff;
+
+  --beam-1: #7c3aed;
+  --beam-2: #06b6d4;
+  --beam-3: #f59e0b;
+  --beam-4: #ec4899;
+  --beam-opacity: 0.85;
+}
+
+:root[data-theme="light"] {
+  --background: #f7f8ff;
+  --foreground: #0b1020;
+  --muted: rgba(11, 16, 32, 0.72);
+  --panel: rgba(255, 255, 255, 0.65);
+  --panel-strong: rgba(255, 255, 255, 0.78);
+  --panel-border: rgba(11, 16, 32, 0.10);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  --beam-occlude: #ffffff;
+
+  --beam-1: #7c3aed;
+  --beam-2: #06b6d4;
+  --beam-3: #f59e0b;
+  --beam-4: #ec4899;
+  --beam-opacity: 0.85;
+}
+
+:root[data-theme="dark"] {
+  --background: #070a12;
+  --foreground: #edf0ff;
+  --muted: rgba(237, 240, 255, 0.72);
+  --panel: rgba(18, 20, 30, 0.55);
+  --panel-strong: rgba(18, 20, 30, 0.72);
+  --panel-border: rgba(255, 255, 255, 0.10);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --beam-occlude: #12141e;
+
+  --beam-1: #60a5fa;
+  --beam-2: #22c55e;
+  --beam-3: #a78bfa;
+  --beam-4: #fb7185;
+  --beam-opacity: 0.78;
 }
 
 @theme inline {
@@ -13,14 +59,229 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme]) {
+    --background: #070a12;
+    --foreground: #edf0ff;
+    --muted: rgba(237, 240, 255, 0.72);
+    --panel: rgba(18, 20, 30, 0.55);
+    --panel-strong: rgba(18, 20, 30, 0.72);
+    --panel-border: rgba(255, 255, 255, 0.10);
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    --beam-occlude: #12141e;
+
+    --beam-1: #60a5fa;
+    --beam-2: #22c55e;
+    --beam-3: #a78bfa;
+    --beam-4: #fb7185;
+    --beam-opacity: 0.78;
   }
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(900px circle at 18% -10%, rgba(124, 58, 237, 0.22), transparent 60%),
+    radial-gradient(900px circle at 86% 12%, rgba(6, 182, 212, 0.18), transparent 58%),
+    radial-gradient(900px circle at 54% 110%, rgba(245, 158, 11, 0.16), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 35%),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.panel-soft {
+  background: color-mix(in srgb, var(--panel-strong) 55%, transparent);
+}
+
+.chip {
+  border: 1px solid var(--panel-border);
+  background: color-mix(in srgb, var(--panel-strong) 55%, transparent);
+  color: var(--muted);
+}
+
+.contact-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  border-radius: 999px;
+  padding: 0.58rem 1.12rem;
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #0b1020;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--panel-strong) 90%, #8cc9ff 10%),
+    color-mix(in srgb, var(--panel) 88%, #b4e2ff 12%)
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 76%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, #7dc8ff 25%, transparent),
+    0 8px 18px color-mix(in srgb, #4d94ff 14%, transparent);
+  text-shadow: 0 1px 0 color-mix(in srgb, white 55%, transparent);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.contact-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.2px;
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, #d6c7ff 88%, transparent),
+    color-mix(in srgb, #86d4ff 84%, transparent)
+  );
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.contact-pill::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    conic-gradient(
+      from 0deg,
+      rgba(0, 0, 0, 0) 0deg,
+      rgba(0, 0, 0, 0) 300deg,
+      color-mix(in srgb, #79e2ff 88%, transparent) 333deg,
+      color-mix(in srgb, #c5b9ff 86%, transparent) 350deg,
+      rgba(0, 0, 0, 0) 360deg
+    ) border-box;
+  filter: blur(0.25px);
+  opacity: 0.75;
+  animation: contact-pill-beam 4.6s linear infinite;
+  pointer-events: none;
+}
+
+.contact-pill:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 80%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, #7dc8ff 30%, transparent),
+    0 10px 20px color-mix(in srgb, #4d94ff 16%, transparent);
+}
+
+.contact-pill:active {
+  transform: translateY(0);
+}
+
+@keyframes contact-pill-beam {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.beam-frame {
+  --beam-radius: 20px;
+  --beam-padding: 1.6px;
+  --beam-duration: 7s;
+  --beam-blur: 16px;
+  --beam-strength: 0.9;
+  --beam-bg: var(--beam-occlude);
+  --beam-sweep-start: 314deg;
+  --beam-sweep-mid: 338deg;
+  --beam-sweep-end: 360deg;
+  position: relative;
+  border-radius: var(--beam-radius);
+  overflow: hidden;
+}
+
+.beam-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: var(--beam-padding) solid transparent;
+  background:
+    linear-gradient(var(--beam-bg), var(--beam-bg)) padding-box,
+    conic-gradient(
+      from 0deg,
+      rgba(0, 0, 0, 0) 0deg,
+      rgba(0, 0, 0, 0) var(--beam-sweep-start),
+      color-mix(in srgb, var(--beam-1) calc(var(--beam-opacity) * 30%), transparent) calc(var(--beam-sweep-start) + 6deg),
+      color-mix(in srgb, var(--beam-2) calc(var(--beam-opacity) * 80%), transparent) var(--beam-sweep-mid),
+      color-mix(in srgb, white 88%, var(--beam-2)) calc(var(--beam-sweep-mid) + 4deg),
+      color-mix(in srgb, var(--beam-1) calc(var(--beam-opacity) * 65%), transparent) calc(var(--beam-sweep-mid) + 10deg),
+      rgba(0, 0, 0, 0) var(--beam-sweep-end)
+    ) border-box;
+  animation: beam-rotate var(--beam-duration) linear infinite;
+  opacity: var(--beam-strength);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.beam-frame::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  border: calc(var(--beam-padding) + 0.4px) solid transparent;
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    conic-gradient(
+      from 0deg,
+      rgba(0, 0, 0, 0) 0deg,
+      rgba(0, 0, 0, 0) var(--beam-sweep-start),
+      color-mix(in srgb, var(--beam-1) 45%, transparent) calc(var(--beam-sweep-start) + 4deg),
+      color-mix(in srgb, var(--beam-2) 85%, transparent) var(--beam-sweep-mid),
+      color-mix(in srgb, white 70%, var(--beam-2)) calc(var(--beam-sweep-mid) + 4deg),
+      color-mix(in srgb, var(--beam-1) 45%, transparent) calc(var(--beam-sweep-mid) + 10deg),
+      rgba(0, 0, 0, 0) var(--beam-sweep-end)
+    ) border-box;
+  filter: blur(calc(var(--beam-blur) * 0.42));
+  opacity: calc(var(--beam-strength) * 0.48);
+  animation: beam-rotate var(--beam-duration) linear infinite;
+  pointer-events: none;
+}
+
+.beam-content {
+  position: relative;
+  border-radius: inherit;
+  isolation: isolate;
+  z-index: 1;
+}
+
+@keyframes beam-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam-frame::before,
+  .beam-frame::after {
+    animation: none;
+  }
 }

@@ -1,65 +1,140 @@
-import Image from "next/image";
+import MediaGrid from "./components/MediaGrid";
+import ThemeToggle from "./components/ThemeToggle";
+
+type MediaItem = {
+  type: "image" | "video";
+  src: string;
+  alt?: string;
+  poster?: string;
+};
+
+type RecordEntry = {
+  date: string;
+  title: string;
+  content: string;
+  tags?: string[];
+  media?: MediaItem[];
+};
+
+const contacts = [
+  { label: "WhatsApp", href: "https://wa.me/1234567890" },
+  { label: "Telegram", href: "https://t.me/your_username" },
+  { label: "邮箱", href: "mailto:you@example.com" },
+  { label: "Line", href: "https://line.me/ti/p/~your_line_id" },
+];
+
+const records: RecordEntry[] = [
+  {
+    date: "2026-04-18",
+    title: "第一天：把页面搭起来",
+    content: "毛玻璃 + 流动边框先到位。后续每天把图片/视频丢进 public/media，再在这里补一条记录。",
+    tags: ["setup", "design"],
+    media: [
+      { type: "image", src: "/globe.svg", alt: "globe" },
+      { type: "image", src: "/window.svg", alt: "window" },
+    ],
+  },
+  {
+    date: "2026-04-17",
+    title: "灵感收集",
+    content: "偏 AI / SaaS Landing 的“高级感”流动边框 + 苹果式毛玻璃质感，暗黑模式也要好看。",
+    tags: ["inspiration"],
+    media: [{ type: "image", src: "/vercel.svg", alt: "vercel" }],
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-dvh w-full">
+      <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 pb-4 pt-6 sm:px-6">
+        <div className="flex items-center gap-3">
+          <div className="grid size-10 place-items-center rounded-2xl border border-[color:var(--panel-border)] bg-[color:var(--panel-strong)] text-[color:var(--foreground)]">
+            <span className="text-lg font-semibold">章</span>
+          </div>
+          <div className="leading-tight">
+            <div className="text-sm font-semibold tracking-wide text-[color:var(--foreground)]">章鱼记录页</div>
+            <div className="text-xs text-[color:var(--muted)]">Octopus Daily Log</div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <ThemeToggle />
+      </header>
+
+      <main className="mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6">
+        <section className="glass rounded-[26px] p-6 sm:p-8">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
+              <h1 className="text-balance text-2xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-3xl">
+                你好，我是（在这里写你的名字）
+              </h1>
+              <p className="max-w-2xl text-pretty text-sm leading-6 text-[color:var(--muted)] sm:text-base">
+                这是我的记录页面：用本地图片与视频，记录每一天。风格偏“流动边框”质感 + 苹果式毛玻璃，
+                在暗黑模式下也保持清爽。
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <p className="text-sm text-[color:var(--muted)]">点击下方按钮可以快速联系我：</p>
+              <div className="flex flex-wrap gap-3">
+                {contacts.map((c) => (
+                  <a
+                    key={c.label}
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-[color:var(--foreground)] transition hover:brightness-105 active:brightness-95"
+                  >
+                    {c.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-10">
+          <div className="mb-4 flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-semibold tracking-tight text-[color:var(--foreground)]">每天的记录</h2>
+              <p className="mt-1 text-sm text-[color:var(--muted)]">
+                把图片/视频放进 public/media，然后在 records 数组里加一条即可。
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5">
+            {records.map((r) => (
+              <article key={r.date} className="glass rounded-[20px] p-5 sm:p-6">
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="text-xs font-medium text-[color:var(--muted)]">{r.date}</div>
+                    {r.tags?.length ? (
+                      <div className="flex flex-wrap gap-2">
+                        {r.tags.map((t) => (
+                          <span
+                            key={t}
+                            className="chip rounded-full px-2.5 py-1 text-xs"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="text-base font-semibold text-[color:var(--foreground)] sm:text-lg">{r.title}</div>
+                  <p className="text-sm leading-6 text-[color:var(--muted)] sm:text-base">{r.content}</p>
+
+                  {r.media?.length ? <MediaGrid media={r.media} /> : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </main>
+
+      <footer className="mx-auto w-full max-w-5xl px-4 pb-10 sm:px-6">
+        <div className="text-xs text-[color:var(--muted)]">© {new Date().getFullYear()} 章鱼记录页</div>
+      </footer>
     </div>
   );
 }
