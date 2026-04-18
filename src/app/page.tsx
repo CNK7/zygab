@@ -25,9 +25,9 @@ const contacts = [
 ];
 
 const usdtDonation = {
-  address: "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  address: "TJ49GUWhHBn5K8dggUH7UNixGAR7777777",
   networkLabel: "TRC20",
-  qrImageSrc: "/usdt-qr.png",
+  qrImageSrc: "/media/usdt.jpg",
 };
 
 const records: RecordEntry[] = [

@@ -34,6 +34,14 @@ export default function DonateUSDTButton({ address, networkLabel = "TRC20", qrIm
   const title = useMemo(() => `USDT 赞赏（${networkLabel}）`, [networkLabel]);
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
+  useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
     }
@@ -64,14 +72,13 @@ export default function DonateUSDTButton({ address, networkLabel = "TRC20", qrIm
       </button>
 
       {open ? (
-        <button
-          type="button"
-          className="fixed inset-0 z-50 grid place-items-center bg-black/65 p-4 sm:p-8"
+        <div
+          className="fixed inset-0 z-[1000] grid place-items-center bg-black/70 p-4 sm:p-8"
           onClick={() => setOpen(false)}
-          aria-label="关闭赞赏弹窗"
+          role="presentation"
         >
           <div
-            className="glass w-full max-w-md rounded-3xl p-5 sm:p-6"
+            className="glass w-full max-w-md rounded-3xl border border-[color:var(--panel-border)] bg-[color:var(--panel-strong)] p-5 shadow-2xl sm:p-6"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -125,7 +132,7 @@ export default function DonateUSDTButton({ address, networkLabel = "TRC20", qrIm
               </div>
             </div>
           </div>
-        </button>
+        </div>
       ) : null}
     </>
   );
