@@ -126,7 +126,8 @@ const records: RecordEntry[] = [
       { type: "image", src: "/picture/zyg (18).jpg", alt: "1" },
       { type: "image", src: "/picture/zyg (19).jpg", alt: "1" },
     ],
-  };
+  }
+  ];
 
 export default function Home() {
   return (
