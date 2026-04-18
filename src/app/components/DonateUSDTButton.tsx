@@ -75,12 +75,12 @@ export default function DonateUSDTButton({ address, networkLabel = "TRC20", qrIm
       {open && typeof document !== "undefined"
         ? createPortal(
             <div
-              className="fixed inset-0 z-[9999] grid place-items-center bg-black/85 p-4 sm:p-8"
+              className="modal-overlay fixed inset-0 z-[9999] grid place-items-center p-4 sm:p-8"
               onPointerDown={() => setOpen(false)}
               role="presentation"
             >
               <div
-                className="w-[92vw] max-w-md overflow-auto rounded-3xl border border-[color:var(--panel-border)] bg-[color:var(--modal-bg)] p-5 shadow-2xl sm:w-full sm:p-6"
+                className="modal-card w-[92vw] max-w-md overflow-auto rounded-3xl p-5 sm:w-full sm:p-6"
                 onPointerDown={(e) => e.stopPropagation()}
                 role="dialog"
                 aria-modal="true"

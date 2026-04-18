@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f8ff;
+  --background: #fbfbff;
   --foreground: #0b1020;
   --muted: rgba(11, 16, 32, 0.72);
-  --panel: rgba(255, 255, 255, 0.65);
-  --panel-strong: rgba(255, 255, 255, 0.78);
-  --panel-border: rgba(11, 16, 32, 0.10);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  --panel: rgba(255, 255, 255, 0.62);
+  --panel-strong: rgba(255, 255, 255, 0.80);
+  --panel-border: rgba(128, 152, 255, 0.20);
+  --shadow: 0 22px 70px rgba(28, 38, 92, 0.18);
   --beam-occlude: #ffffff;
-  --modal-bg: rgba(255, 255, 255, 0.92);
+  --modal-bg: rgba(255, 255, 255, 0.96);
+  --modal-overlay: rgba(6, 8, 16, 0.86);
 
   --beam-1: #7c3aed;
   --beam-2: #06b6d4;
@@ -19,15 +20,16 @@
 }
 
 :root[data-theme="light"] {
-  --background: #f7f8ff;
+  --background: #fbfbff;
   --foreground: #0b1020;
   --muted: rgba(11, 16, 32, 0.72);
-  --panel: rgba(255, 255, 255, 0.65);
-  --panel-strong: rgba(255, 255, 255, 0.78);
-  --panel-border: rgba(11, 16, 32, 0.10);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  --panel: rgba(255, 255, 255, 0.62);
+  --panel-strong: rgba(255, 255, 255, 0.80);
+  --panel-border: rgba(128, 152, 255, 0.20);
+  --shadow: 0 22px 70px rgba(28, 38, 92, 0.18);
   --beam-occlude: #ffffff;
-  --modal-bg: rgba(255, 255, 255, 0.92);
+  --modal-bg: rgba(255, 255, 255, 0.96);
+  --modal-overlay: rgba(6, 8, 16, 0.86);
 
   --beam-1: #7c3aed;
   --beam-2: #06b6d4;
@@ -40,12 +42,13 @@
   --background: #070a12;
   --foreground: #edf0ff;
   --muted: rgba(237, 240, 255, 0.72);
-  --panel: rgba(18, 20, 30, 0.55);
-  --panel-strong: rgba(18, 20, 30, 0.72);
-  --panel-border: rgba(255, 255, 255, 0.10);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --panel: rgba(14, 16, 26, 0.56);
+  --panel-strong: rgba(14, 16, 26, 0.78);
+  --panel-border: rgba(162, 210, 255, 0.16);
+  --shadow: 0 26px 80px rgba(0, 0, 0, 0.62);
   --beam-occlude: #12141e;
-  --modal-bg: rgba(12, 14, 22, 0.92);
+  --modal-bg: rgba(10, 12, 20, 0.96);
+  --modal-overlay: rgba(0, 0, 0, 0.78);
 
   --beam-1: #60a5fa;
   --beam-2: #22c55e;
@@ -66,12 +69,13 @@
     --background: #070a12;
     --foreground: #edf0ff;
     --muted: rgba(237, 240, 255, 0.72);
-    --panel: rgba(18, 20, 30, 0.55);
-    --panel-strong: rgba(18, 20, 30, 0.72);
-    --panel-border: rgba(255, 255, 255, 0.10);
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    --panel: rgba(14, 16, 26, 0.56);
+    --panel-strong: rgba(14, 16, 26, 0.78);
+    --panel-border: rgba(162, 210, 255, 0.16);
+    --shadow: 0 26px 80px rgba(0, 0, 0, 0.62);
     --beam-occlude: #12141e;
-    --modal-bg: rgba(12, 14, 22, 0.92);
+    --modal-bg: rgba(10, 12, 20, 0.96);
+    --modal-overlay: rgba(0, 0, 0, 0.78);
 
     --beam-1: #60a5fa;
     --beam-2: #22c55e;
@@ -83,10 +87,11 @@
 
 body {
   background:
-    radial-gradient(900px circle at 18% -10%, rgba(124, 58, 237, 0.22), transparent 60%),
-    radial-gradient(900px circle at 86% 12%, rgba(6, 182, 212, 0.18), transparent 58%),
-    radial-gradient(900px circle at 54% 110%, rgba(245, 158, 11, 0.16), transparent 62%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 35%),
+    radial-gradient(900px circle at 10% 0%, rgba(255, 159, 224, 0.30), transparent 58%),
+    radial-gradient(900px circle at 92% 8%, rgba(139, 182, 255, 0.30), transparent 56%),
+    radial-gradient(900px circle at 50% 110%, rgba(161, 255, 232, 0.22), transparent 62%),
+    radial-gradient(600px circle at 25% 60%, rgba(186, 170, 255, 0.18), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 35%),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto,
@@ -94,23 +99,44 @@ body {
 }
 
 .glass {
-  background: var(--panel);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--panel-strong) 88%, rgba(255, 255, 255, 0.25)),
+      color-mix(in srgb, var(--panel) 84%, rgba(255, 255, 255, 0.10))
+    );
   border: 1px solid var(--panel-border);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, white 42%, transparent),
+    var(--shadow);
+  backdrop-filter: blur(20px) saturate(1.35);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35);
   overflow: hidden;
   isolation: isolate;
 }
 
 .panel-soft {
-  background: color-mix(in srgb, var(--panel-strong) 55%, transparent);
+  background: color-mix(in srgb, var(--panel-strong) 60%, transparent);
 }
 
 .chip {
   border: 1px solid var(--panel-border);
-  background: color-mix(in srgb, var(--panel-strong) 55%, transparent);
+  background: color-mix(in srgb, var(--panel-strong) 60%, transparent);
   color: var(--muted);
+}
+
+.modal-overlay {
+  background: var(--modal-overlay);
+}
+
+.modal-card {
+  background: var(--modal-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, white 38%, transparent),
+    0 30px 120px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
 }
 
 .contact-pill {
