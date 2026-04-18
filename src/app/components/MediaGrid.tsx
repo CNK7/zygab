@@ -75,28 +75,25 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
       {activeImage && typeof document !== "undefined"
         ? createPortal(
             <div
-              className="modal-overlay fixed inset-0 z-[9998] grid place-items-center p-4 sm:p-8"
+              className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/85 p-2 sm:p-6"
               onPointerDown={() => setActiveImage(null)}
               role="presentation"
             >
               <div
-                className="modal-card w-[94vw] max-w-6xl rounded-3xl p-3 sm:p-4"
-                onPointerDown={(e) => e.stopPropagation()}
+                className="relative h-[92dvh] w-[96vw] max-w-6xl"
+                onPointerDown={() => setActiveImage(null)}
                 role="dialog"
                 aria-modal="true"
                 aria-label="图片预览"
-                style={{ maxHeight: "90vh" }}
               >
-                <div className="relative h-[82vh] w-full sm:h-[86vh]">
-                  <Image
-                    src={activeImage.src}
-                    alt={activeImage.alt ?? ""}
-                    fill
-                    sizes="100vw"
-                    className="object-contain"
-                    priority
-                  />
-                </div>
+                <Image
+                  src={activeImage.src}
+                  alt={activeImage.alt ?? ""}
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>,
             document.body,
