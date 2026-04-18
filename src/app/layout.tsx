@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "章鱼记录页",
   description: "用图片与视频记录每一天",
+  icons: {
+    icon: "/picture/zyg.png",
+    shortcut: "/picture/zyg.png",
+    apple: "/picture/zyg.png",
+  },
 };
 
 export default function RootLayout({

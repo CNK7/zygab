@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MediaGrid from "./components/MediaGrid";
 import DonateUSDTButton from "./components/DonateUSDTButton";
 import ThemeToggle from "./components/ThemeToggle";
@@ -51,7 +52,14 @@ const records: RecordEntry[] = [
     title: "灵感收集",
     content: "偏 AI / SaaS Landing 的“高级感”流动边框 + 苹果式毛玻璃质感，暗黑模式也要好看。",
     tags: ["inspiration"],
-    media: [{ type: "image", src: "/vercel.svg", alt: "vercel" }],
+    media: [
+      { type: "video", src: "/video/zyg%20%281%29.mp4" },
+      { type: "video", src: "/video/zyg%20%282%29.mp4" },
+      { type: "video", src: "/video/zyg%20%283%29.mp4" },
+      { type: "video", src: "/video/zyg%20%284%29.mp4" },
+      { type: "video", src: "/video/zyg%20%285%29.mp4" },
+      { type: "video", src: "/video/zyg%20%286%29.mp4" },
+    ],
   },
 ];
 
@@ -61,7 +69,7 @@ export default function Home() {
       <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 pb-4 pt-6 sm:px-6">
         <div className="flex items-center gap-3">
           <div className="grid size-10 place-items-center rounded-2xl border border-[color:var(--panel-border)] bg-[color:var(--panel-strong)] text-[color:var(--foreground)]">
-            <span className="text-lg font-semibold">章</span>
+            <Image src="/picture/zyg.png" alt="logo" width={22} height={22} className="object-contain" priority />
           </div>
           <div className="leading-tight">
             <div className="text-sm font-semibold tracking-wide text-[color:var(--foreground)]">章鱼记录页</div>
