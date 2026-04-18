@@ -19,10 +19,10 @@ type RecordEntry = {
 };
 
 const contacts = [
-  { label: "WhatsApp", href: "https://wa.me/1234567890" },
-  { label: "Telegram", href: "https://t.me/your_username" },
-  { label: "邮箱", href: "mailto:you@example.com" },
-  { label: "Line", href: "https://line.me/ti/p/~your_line_id" },
+  { label: "WhatsApp", href: "https://wa.me/qr/L6Q5RLMFYFFEM1" },
+  { label: "Telegram", href: "https://t.me/zygnbot" },
+  { label: "邮箱", href: "mailto:F56788@88.com" },
+  { label: "Line", href: "https://line.me/ti/p/xhULu8n4jQ" },
 ];
 
 const usdtDonation = {
