@@ -34,6 +34,23 @@ const usdtDonation = {
 
 const records: RecordEntry[] = [
   {
+    date: "2026-04-19",
+    title: "新增精彩内容",
+    content: "今天又添加了一些新的照片和视频，欢迎观看！",
+    tags: ["daily", "new"],
+    media: [
+      { type: "image", src: "/picture/g3p (1).jpg", alt: "g3p 1" },
+      { type: "image", src: "/picture/g3p (2).jpg", alt: "g3p 2" },
+      { type: "image", src: "/picture/g3p (3).jpg", alt: "g3p 3" },
+      { type: "video", src: "/video/g3 (1).mp4" },
+      { type: "video", src: "/video/g3 (2).mp4" },
+      { type: "video", src: "/video/g3 (3).mp4" },
+      { type: "video", src: "/video/g3 (4).mp4" },
+      { type: "video", src: "/video/C211.mp4" },
+      { type: "video", src: "/video/C212.mp4" },
+    ],
+  },
+  {
     date: "2026-04-18",
     title: "跟妹妹聊色色",
     content: "今天休息，睡到下午有点无聊了。想到妹妹好久没联系了，就联系一下。妹妹一说干嘛我就想歪了，嘎嘎嘎。干脆就（干吧）",
