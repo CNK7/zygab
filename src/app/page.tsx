@@ -54,7 +54,8 @@ const records: RecordEntry[] = [
     content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏\n建议直接打开右上角放大按钮观看哦~",
     tags: ["inspiration"],
     media: [
-      { type: "video", src: "/video/zyg-1.mp4" },
+      // zyg-1.mp4 超过了 GitHub 的 100MB 限制，请单独处理（如压缩或托管到第三方平台）
+      // { type: "video", src: "/video/zyg-1.mp4" },
       { type: "video", src: "/video/zyg-2.mp4" },
       { type: "video", src: "/video/zyg-3.mp4" },
       { type: "video", src: "/video/zyg-4.mp4" },
