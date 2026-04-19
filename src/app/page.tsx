@@ -2,6 +2,7 @@ import Image from "next/image";
 import MediaGrid from "./components/MediaGrid";
 import DonateUSDTButton from "./components/DonateUSDTButton";
 import ThemeToggle from "./components/ThemeToggle";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 type MediaItem = {
   type: "image" | "video";
@@ -61,7 +62,7 @@ const records: RecordEntry[] = [
       { type: "video", src: "/video/zyg-6.mp4" },
     ],
   },
- {
+  {
     date: "2026-01-01",
     title: "妹妹照片",
     content: "之前带妹妹一起出去玩的照片",
@@ -127,11 +128,12 @@ const records: RecordEntry[] = [
       { type: "image", src: "/picture/zyg (19).jpg", alt: "1" },
     ],
   }
-  ];
+];
 
 export default function Home() {
   return (
     <div className="min-h-dvh w-full">
+      <ScrollToTopButton />
       <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 pb-4 pt-6 sm:px-6">
         <div className="flex items-center gap-3">
           <div className="grid size-10 place-items-center rounded-2xl border border-[color:var(--panel-border)] bg-[color:var(--panel-strong)] text-[color:var(--foreground)]">
