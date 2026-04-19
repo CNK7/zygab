@@ -1,0 +1,19 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.thumbnail {
+  position: relative;
+}
+
+.thumbnail:last-child::after {
+  content: '还有 N 张';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 4px;
+}
