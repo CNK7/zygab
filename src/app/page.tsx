@@ -237,6 +237,32 @@ const records: RecordEntry[] = [
       { type: "image", src: "/picture/qxy (15).jpg", alt: "15" },
     ],
   },
+   {
+    date: "2025-12-25",
+    title: "14岁干女儿2号",
+    content: "成都的可爱干女儿☺️",
+    tags: ["setup", "design"],
+    media: [
+      { type: "image", src: "/picture/C2.jpg", alt: "1" },
+      { type: "video", src: "/video/C211.mp4" },
+      { type: "video", src: "/video/C212.mp4" },
+    ],
+  },
+  {
+    date: "2025-12-25",
+    title: "高2小女友",
+    content: "小母狗一个，骚逼☺️",
+    tags: ["setup", "design"],
+    media: [
+      { type: "image", src: "/picture/g3p (1).jpg", alt: "1" },
+      { type: "image", src: "/picture/g3p (2).jpg", alt: "1" },
+      { type: "image", src: "/picture/g3p (3).jpg", alt: "1" },
+      { type: "video", src: "/video/g3 (1).mp4" },
+      { type: "video", src: "/video/g3 (2).mp4" },
+      { type: "video", src: "/video/g3 (3).mp4" },
+      { type: "video", src: "/video/g3 (4).mp4" },
+    ],
+  },
   {
     date: "2025-12-25",
     title: "15岁可爱小女友1号",
