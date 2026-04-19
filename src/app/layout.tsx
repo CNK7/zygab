@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "章鱼记录页",
-  description: "用图片与视频记录每一天",
+  description: "章鱼哥的记录页面，记录美好生活每一天！记载文案；照片；视频等等......",
   icons: {
     icon: "/picture/zyg.png",
     shortcut: "/picture/zyg.png",
