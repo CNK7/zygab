@@ -54,13 +54,13 @@ const records: RecordEntry[] = [
     content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏\n建议直接打开右上角放大按钮观看哦~",
     tags: ["inspiration"],
     media: [
-      // zyg-1.mp4 超过了 GitHub 的 100MB 限制，请单独处理（如压缩或托管到第三方平台）
+      // zyg-1.mp4, zyg-3.mp4, zyg-4.mp4, zyg-6.mp4 超过了 Cloudflare Pages 的 25MB 限制
       // { type: "video", src: "/video/zyg-1.mp4" },
       { type: "video", src: "/video/zyg-2.mp4" },
-      { type: "video", src: "/video/zyg-3.mp4" },
-      { type: "video", src: "/video/zyg-4.mp4" },
+      // { type: "video", src: "/video/zyg-3.mp4" },
+      // { type: "video", src: "/video/zyg-4.mp4" },
       { type: "video", src: "/video/zyg-5.mp4" },
-      { type: "video", src: "/video/zyg-6.mp4" },
+      // { type: "video", src: "/video/zyg-6.mp4" },
     ],
   },
   {
@@ -228,7 +228,8 @@ const records: RecordEntry[] = [
     media: [
       { type: "image", src: "/picture/C2.jpg", alt: "1" },
       { type: "video", src: "/video/C211.mp4" },
-      { type: "video", src: "/video/C212.mp4" },
+      // C212.mp4 超过了 Cloudflare Pages 的 25MB 限制
+      // { type: "video", src: "/video/C212.mp4" },
     ],
   },
   {
@@ -240,10 +241,11 @@ const records: RecordEntry[] = [
       { type: "image", src: "/picture/g3p (1).jpg", alt: "1" },
       { type: "image", src: "/picture/g3p (2).jpg", alt: "1" },
       { type: "image", src: "/picture/g3p (3).jpg", alt: "1" },
-      { type: "video", src: "/video/g3 (1).mp4" },
-      { type: "video", src: "/video/g3 (2).mp4" },
+      // g3 (1).mp4, g3 (2).mp4, g3 (4).mp4 超过了 Cloudflare Pages 的 25MB 限制
+      // { type: "video", src: "/video/g3 (1).mp4" },
+      // { type: "video", src: "/video/g3 (2).mp4" },
       { type: "video", src: "/video/g3 (3).mp4" },
-      { type: "video", src: "/video/g3 (4).mp4" },
+      // { type: "video", src: "/video/g3 (4).mp4" },
     ],
   },
   {
