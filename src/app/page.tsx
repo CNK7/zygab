@@ -54,7 +54,7 @@ const records: RecordEntry[] = [
     content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏\n建议直接打开右上角放大按钮观看哦~",
     tags: ["inspiration"],
     media: [
-      // { type: "video", src: "/video/zyg-1.mp4" },
+      { type: "video", src: "/video/zyg-1.mp4" },
       { type: "video", src: "/video/zyg-2.mp4" },
       { type: "video", src: "/video/zyg-3.mp4" },
       { type: "video", src: "/video/zyg-4.mp4" },
