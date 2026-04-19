@@ -78,19 +78,24 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
     setActiveIndex(activeIndex + 1);
   }
 
+  const displayMedia = media.slice(0, 4);
+  const hasMore = media.length > 4;
+  const remainingCount = media.length - 4;
+
   return (
     <>
-      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {media.map((item, index) => {
+      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {displayMedia.map((item, index) => {
+          const isLastDisplay = index === 3 && hasMore;
+
           if (item.type === "video") {
             return (
               <div
                 key={`${item.type}:${item.src}`}
-                className="panel-soft relative aspect-video overflow-hidden rounded-xl border border-[color:var(--panel-border)]"
+                className="panel-soft relative aspect-square overflow-hidden rounded-xl border border-[color:var(--panel-border)]"
               >
                 <video
                   className="h-full w-full object-cover"
-                  controls
                   preload="metadata"
                   src={item.src}
                   poster={item.poster}
@@ -98,16 +103,20 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
                 <button
                   type="button"
                   onClick={() => setActiveIndex(index)}
-                  className="absolute right-2 top-2 grid h-9 w-9 place-items-center rounded-full bg-black/45 text-white backdrop-blur hover:bg-black/55 active:bg-black/65"
-                  aria-label="放大观看视频"
-                  title="放大观看"
+                  className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors hover:bg-black/30 active:bg-black/40"
+                  aria-label="查看视频"
+                  title="查看视频"
                 >
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M9 3H5a2 2 0 0 0-2 2v4" strokeLinecap="round" />
-                    <path d="M15 21h4a2 2 0 0 0 2-2v-4" strokeLinecap="round" />
-                    <path d="M21 9V5a2 2 0 0 0-2-2h-4" strokeLinecap="round" />
-                    <path d="M3 15v4a2 2 0 0 0 2 2h4" strokeLinecap="round" />
-                  </svg>
+                  <div className="grid h-10 w-10 place-items-center rounded-full bg-black/45 text-white backdrop-blur">
+                    <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  {isLastDisplay && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-xl font-bold text-white backdrop-blur-[2px]">
+                      +{remainingCount}
+                    </div>
+                  )}
                 </button>
               </div>
             );
@@ -118,16 +127,21 @@ export default function MediaGrid({ media }: { media: MediaItem[] }) {
               key={`${item.type}:${item.src}`}
               type="button"
               onClick={() => setActiveIndex(index)}
-              className="panel-soft relative aspect-video overflow-hidden rounded-xl border border-[color:var(--panel-border)] text-left"
+              className="panel-soft relative aspect-square overflow-hidden rounded-xl border border-[color:var(--panel-border)] text-left"
               aria-label={`查看大图：${item.alt ?? "图片"}`}
             >
               <Image
                 src={item.src}
                 alt={item.alt ?? ""}
                 fill
-                sizes="(max-width: 640px) 100vw, 50vw"
+                sizes="(max-width: 640px) 50vw, 25vw"
                 className="object-cover transition duration-200 hover:scale-[1.02]"
               />
+              {isLastDisplay && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-xl font-bold text-white backdrop-blur-[2px]">
+                  +{remainingCount}
+                </div>
+              )}
             </button>
           );
         })}

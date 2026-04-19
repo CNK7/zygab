@@ -51,7 +51,7 @@ const records: RecordEntry[] = [
   {
     date: "2026-04-17",
     title: "视频集锦",
-    content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏<br />建议直接打开右上角放大按钮观看哦~",
+    content: "跟妹妹在一块的时候一起录的视频，嘿嘿嘿😏\n建议直接打开右上角放大按钮观看哦~",
     tags: ["inspiration"],
     media: [
       { type: "video", src: "/video/zyg-1.mp4" },
@@ -128,7 +128,7 @@ const records: RecordEntry[] = [
       { type: "image", src: "/picture/zyg (19).jpg", alt: "1" },
     ],
   },
-       {
+  {
     date: "2025-12-26",
     title: "15岁可爱小女友2号",
     content: "这位妹妹从13岁开始跟我到现在，几乎没有她不会的爱爱姿势，可爱又听话，真让我爱不释手。口交，吞精，舔屁眼，三洞全开。",
