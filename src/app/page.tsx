@@ -34,23 +34,6 @@ const usdtDonation = {
 
 const records: RecordEntry[] = [
   {
-    date: "2026-04-19",
-    title: "新增精彩内容",
-    content: "今天又添加了一些新的照片和视频，欢迎观看！",
-    tags: ["daily", "new"],
-    media: [
-      { type: "image", src: "/picture/g3p (1).jpg", alt: "g3p 1" },
-      { type: "image", src: "/picture/g3p (2).jpg", alt: "g3p 2" },
-      { type: "image", src: "/picture/g3p (3).jpg", alt: "g3p 3" },
-      { type: "video", src: "/video/g3 (1).mp4" },
-      { type: "video", src: "/video/g3 (2).mp4" },
-      { type: "video", src: "/video/g3 (3).mp4" },
-      { type: "video", src: "/video/g3 (4).mp4" },
-      { type: "video", src: "/video/C211.mp4" },
-      { type: "video", src: "/video/C212.mp4" },
-    ],
-  },
-  {
     date: "2026-04-18",
     title: "跟妹妹聊色色",
     content: "今天休息，睡到下午有点无聊了。想到妹妹好久没联系了，就联系一下。妹妹一说干嘛我就想歪了，嘎嘎嘎。干脆就（干吧）",
@@ -362,7 +345,11 @@ export default function Home() {
               <p className="max-w-2xl text-pretty text-sm leading-6 text-[color:var(--muted)] sm:text-base">
                 这是我的记录页面：记录美好生活每一天。
                 <br />
-                这里只是某些预览，投喂388及以上更有更多内容待开放哦！【无码超清等待你来解锁！】不会使用USDT的板板可以联系我邮箱哦~
+                这里只是某些预览，投喂388及以上更有更多内容待开放哦！详情请咨询章鱼哥哦~
+                <br />
+                由于网址限制，只能上传低画质的照片和视频，投喂后可享受超清无码的照片和视频哦~【无码超清等待你来解锁！】
+                <br />
+                不会使用USDT的板板可以联系我邮箱哦~
               </p>
             </div>
 
@@ -395,7 +382,7 @@ export default function Home() {
             <div>
               <h2 className="text-lg font-semibold tracking-tight text-[color:var(--foreground)]">精彩集锦</h2>
               <p className="mt-1 text-sm text-[color:var(--muted)]">
-                无码超清等待你来解锁！妹妹正在开发中~还有3个小女友，忙不过来了嘎QAQ
+                无码超清等待你来解锁！妹妹正在开发中~还有几个小女友，忙不过来了嘎QAQ
               </p>
             </div>
           </div>
